@@ -40,26 +40,26 @@ app.post('/age-transform',async(req,res)=>{
     return
   }
 
-  try {
-
-    const output = await replicate.run(
+  
+  const output = await replicate.run(
       "yuval-alaluf/sam:9222a21c181b707209ef12b5e0d7e94c994b58f01c7b2fec075d2e892362f13c",
       {
         input: {
-        image:image, //image
-        target_age:target_age
+          image:image, //image
+          target_age:target_age
       }
     }
   );
   
   res.status(200).json({url:output}); 
+  // try {
 
-  } catch (error) {
-    res.status(400).json({
-      status:"error",
-      message:"Somethings wents wrong"
-    })
-  }
+  // } catch (error) {
+  //   res.status(400).json({
+  //     status:"error",
+  //     message:"Somethings wents wrong"
+  //   })
+  // }
 
 })
 
